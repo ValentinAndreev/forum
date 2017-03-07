@@ -1,0 +1,10 @@
+h3 Registration
+= simple_form_for @user do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+  .form-actions
+    = f.button :submit, 'Create user', class: "btn btn-primary"
+= link_to 'Back', root_path

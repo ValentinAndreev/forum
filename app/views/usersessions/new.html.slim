@@ -1,0 +1,12 @@
+= form_tag usersessions_path, method: :post do
+  .form-inputs
+    = label_tag :email
+    br
+    = text_field_tag :email, nil, class: "form-control"
+  .form-inputs
+    = label_tag :password
+    br
+    = password_field_tag :password, nil, class: "form-control"
+  br
+  .form-actions
+    = submit_tag 'Login', class: "btn btn-primary"

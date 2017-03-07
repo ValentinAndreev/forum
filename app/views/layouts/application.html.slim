@@ -8,6 +8,13 @@ html
     = javascript_include_tag 'application'
   body
     .container
+      - if current_user
+        = current_user.email
+        =< link_to 'Edit profile', edit_user_path(current_user.id)
+        =< link_to 'Logout', logout_path, method: :post
+      - else
+        = link_to 'Registration', new_user_path
+        =< link_to 'Sign in', login_path
       p.notice= notice
       p.alert= alert
       = yield
