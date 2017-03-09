@@ -1,0 +1,4 @@
+= simple_form_for @post do |form|
+  = form.input :name, as: :text, input_html: {style: 'height:35px;'}, autofocus: true, required: true 
+  = form.input :text, as: :text, input_html: {rows: '4'}, required: true 
+  = form.button :submit, class: 'btn btn-primary'

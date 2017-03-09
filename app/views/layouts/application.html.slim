@@ -12,6 +12,8 @@ html
         = current_user.email
         =< link_to 'Edit profile', edit_user_path(current_user.id)
         =< link_to 'Logout', logout_path, method: :post
+        =< link_to 'All posts', posts_path
+        =< link_to 'New post', new_post_path
       - else
         = link_to 'Registration', new_user_path
         =< link_to 'Sign in', login_path
