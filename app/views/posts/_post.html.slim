@@ -1,10 +1,11 @@
-h3 =post.name
-| Author: #{post.user.email}
-|  Created: #{post.created_at}
-p
-  br/
-  =< link_to 'Show', post_path(post), class: 'btn btn-primary'
-  - if post.user == current_user
-    =< link_to 'Edit', edit_post_path(post), class: 'btn btn-primary'
-    =< link_to 'Delete', post_path(post),method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary'
-hr/
+.item[data-item-id="#{post.id}"]
+  #text
+    h3 =< link_to "#{post.name}", post_path(post)
+    | Author: #{post.user.email}
+    |  Created: #{post.created_at}
+    p
+      br/
+      =< link_to 'Show', post_path(post), class: 'btn btn-primary'
+      - if post.user == current_user
+        =< link_to 'Edit', edit_post_path(post), class: 'btn btn-primary', remote: true
+        =< link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary', remote: true

@@ -1,39 +1,33 @@
 class PostsController < ApplicationController
   before_action :require_login
-  before_action :set_post, except: [:index, :new, :create]
+  before_action :set_post
 
   def index
     @posts = Post.all
+    respond_to do |format|
+      format.html
+      format.js
+    end  
   end
 
   def show ; end
+
+  def edit ; end
 
   def new
     @post = current_user.posts.new
   end
 
   def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      redirect_to posts_path, notice: 'Post was created'
-    else
-      render 'new'
-    end
+    @post = current_user.posts.create!(post_params)
   end
 
-  def edit ; end
-
   def update
-    if @post.update(post_params)
-      redirect_to posts_path, notice: 'Post was updated'
-    else
-      render 'edit'
-    end
+    @post.update_attributes!(post_params)
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: 'Post was deleted'
   end
 
   private

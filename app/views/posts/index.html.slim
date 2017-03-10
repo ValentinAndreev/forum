@@ -1,2 +1,7 @@
 h2 All posts
-= render @posts
+#posts
+  = render @posts
+h2  
+  => link_to 'New post', new_post_path, remote: true, class: 'btn btn-primary' 
+  = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
+#form
