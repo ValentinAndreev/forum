@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], :per_page => 3)
     respond_to do |format|
       format.html
       format.js
@@ -19,11 +19,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create!(post_params)
+    @post = current_user.posts.new(post_params)
+    render 'new' unless @post.save
   end
 
   def update
-    @post.update_attributes!(post_params)
+    @post.update(post_params)
+    render 'edit' unless @post.update(post_params)
   end
 
   def destroy

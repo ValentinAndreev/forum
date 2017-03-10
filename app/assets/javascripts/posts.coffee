@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#close').on "click", (event) ->
-    event.preventDefault()
+  $('#close').click ->
     $('#close').hide()
     $('#form').fadeOut()
