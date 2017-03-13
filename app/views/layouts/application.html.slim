@@ -9,7 +9,8 @@ html
   body
     .container
       - if current_user
-        = current_user.email
+        = image_tag avatar_url(current_user), style: 'border-radius: 50%;'
+        =< current_user.email
         =< link_to 'Edit profile', edit_user_path(current_user.id)
         =< link_to 'Logout', logout_path, method: :post
         =< link_to 'All posts', posts_path
