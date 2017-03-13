@@ -10,7 +10,13 @@ class PostsController < ApplicationController
     end  
   end
 
-  def show ; end
+  def show
+    @comments = @post.comments.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def edit ; end
 

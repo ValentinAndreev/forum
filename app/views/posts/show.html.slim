@@ -5,4 +5,9 @@ p
   br/
   | Author: #{@post.user.email}
   |  Created: #{@post.created_at}
-hr/
+#comments
+  = render @comments
+h2 
+  => link_to 'New comment', new_post_comment_path(@post), remote: true, class: 'btn btn-primary'
+  = link_to 'Close comment form', '#', id: 'comment-close', class: 'btn btn-primary'
+#form-comment

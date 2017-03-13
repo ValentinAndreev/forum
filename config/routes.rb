@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'home#welcome'
   resources :usersessions, except: [:new, :destroy]
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   get 'login' => 'usersessions#new', as: :login
-  post 'logout' => 'usersessions#destroy', as: :logout  
+  post 'logout' => 'usersessions#destroy', as: :logout
 end
