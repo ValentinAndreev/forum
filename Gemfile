@@ -40,10 +40,11 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rspec-rails'
+  gem 'capybara'  
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem 'launchy'
 end
 
