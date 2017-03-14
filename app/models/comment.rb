@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :text, presence: true, uniqueness: true
+  validates :text, presence: true
   belongs_to :user
   belongs_to :post
 end

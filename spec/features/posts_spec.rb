@@ -12,26 +12,28 @@ feature 'Posts actions' do
   end
 
   scenario 'edit post', js: true do
-    click_on 'Edit'    
+    click_on 'Edit', exact: true, match: :first
     fill_in 'Name', with: 'New name'
     fill_in 'Text', with: 'New text'
     click_on 'Update Post'
-    expect(page).to_not have_content 'Post name'
+    expect(page).to_not have_content 'MyString'
     expect(page).to have_content 'New name'
   end
 
   scenario 'show post' do
     visit root_path
     click_on 'All posts'
-    click_on 'Show'    
+    click_on 'Show', match: :first   
     expect(current_path).to eq post_path(1)
-    expect(page).to have_content 'Post name'
-    expect(page).to have_content 'Post text'    
+    expect(page).to have_content 'MyString'
+    expect(page).to have_content 'MyText'    
   end
 
-  scenario 'delete post', js: true do
-    click_on 'Delete'    
-    page.driver.browser.switch_to.alert.accept
+  scenario 'delete posts', js: true do
+    2.times {
+      click_on 'Delete', match: :first 
+      page.driver.browser.switch_to.alert.accept
+    }
     expect(page).to_not have_content 'Post name'
   end
 end

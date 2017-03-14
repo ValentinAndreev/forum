@@ -6,5 +6,6 @@ module SpecMacros
     fill_in 'Password', with: 'password'
     click_on 'Login'
     expect(page).to have_content 'Succesfully logined'
+    create(:post, user: user)
   end
 end
