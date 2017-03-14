@@ -1,4 +1,6 @@
+= tinymce
 = simple_form_for @post, remote: true do |form|
   = form.input :name, as: :text, input_html: {style: 'height:35px;'}, required: true 
-  = form.input :text, as: :text, input_html: {rows: '4'}, required: true 
+  = form.text_area :text, class: "tinymce", rows: 10
+  br/
   = form.button :submit, class: 'btn btn-primary'
