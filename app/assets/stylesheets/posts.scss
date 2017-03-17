@@ -24,3 +24,15 @@ textarea { resize: none; }
 h2 {
   text-align: center;
 }
+
+#posts {
+  margin-top: 25px;
+  border-collapse: collapse;
+  td, th {
+    padding: 5px 8px;
+    border: solid 1px #CCC;
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

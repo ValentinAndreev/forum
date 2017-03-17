@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Comment actions' do
-  background do 
+  before do 
     log_in_user
     visit posts_path
     click_on 'Show'

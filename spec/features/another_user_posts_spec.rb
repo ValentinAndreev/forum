@@ -13,9 +13,8 @@ feature 'Another users post actions' do
   scenario 'can show post' do
     visit root_path
     click_on 'All posts'
-    click_on 'Post name'   
-    expect(current_path).to eq post_path(6)
-    expect(page).to have_content 'Post name'
+    click_on 'Post name'
+    expect(page).to have_content 'Author: another_mail@mail.com'
     expect(page).to have_content 'Post text'    
   end
 

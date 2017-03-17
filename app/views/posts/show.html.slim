@@ -1,6 +1,6 @@
 = image_tag avatar_url(@post.user), style: 'border-radius: 50%;'
 h3 =@post.name
-= sanitize @post.text, tags: %w(a b i strong em p h1 h2 h3 h4 h5 h6 br hr ul li img pre), attributes: %w(href name src type value width height style)
+= sanitz (@post)
 p
   br/
   | Author: #{@post.user.email}

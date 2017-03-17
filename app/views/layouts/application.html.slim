@@ -10,13 +10,15 @@ html
     .container
       - if current_user
         = image_tag avatar_url(current_user), style: 'border-radius: 50%;'
-        =< current_user.email
-        =< link_to 'Edit profile', edit_user_path(current_user.id)
+        =<> current_user.email
+        - if current_user.admin
+        | Welcome administrator!
+        =<> link_to 'Edit profile', edit_user_path(current_user.id)
         =< link_to 'Logout', logout_path, method: :post
         =< link_to 'All posts', posts_path
       - else
         = link_to 'Registration', new_user_path
-        =< link_to 'Sign in', login_path
+        =< link_to 'Sign in', login_path 
       p.notice= notice
       p.alert= alert
       = yield

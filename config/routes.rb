@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :usersessions, except: [:new, :destroy]
   resources :users
   resources :posts do
+    collection { post :search, to: 'posts#index' }
     resources :comments
   end
   get 'login' => 'usersessions#new', as: :login

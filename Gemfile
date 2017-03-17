@@ -61,10 +61,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass'
-gem 'carrierwave'
-gem 'dotenv-rails', require: 'dotenv/rails-now'
-gem 'fog-aws'
 gem 'gravtastic'
+gem 'ransack'
 gem 'simple_form'
 gem 'slim'
 gem 'sorcery'

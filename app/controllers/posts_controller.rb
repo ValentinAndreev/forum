@@ -3,11 +3,13 @@ class PostsController < ApplicationController
   before_action :set_post
 
   def index
+    @search = Post.search(params[:q])
+    @searched_posts = @search.result
     @posts = Post.paginate(:page => params[:page], :per_page => 3)
     respond_to do |format|
       format.html
       format.js
-    end  
+    end
   end
 
   def show
@@ -36,6 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    redirect_to posts_path if current_user.admin
   end
 
   private

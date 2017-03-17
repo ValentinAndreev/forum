@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Another users post actions' do
-  background do 
+  before do 
     log_in_user 
     visit post_path(Post.first)
   end
