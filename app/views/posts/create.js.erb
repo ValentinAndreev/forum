@@ -1,3 +1,8 @@
 $('#close').hide();
 $('#form').fadeOut();
-$('#posts').append("<%= j render @post %>");
+if ($('.item').length != 3) {
+ $('#posts').append("<%= j render @post %>");
+}
+ else {
+  location.reload();
+ }

@@ -1,7 +1,6 @@
-= tinymce
 br/
 = simple_form_for @post, remote: true do |form|
-  = form.input :name, as: :text, input_html: {style: 'height:35px;'}, required: true 
-  = form.text_area :text, class: "tinymce", id: 'texteditor', rows: 10
+  = form.input :name, as: :text, input_html: {style: 'height:35px;'}, required: true
+  = form.trix_editor :text, id: 'texteditor'
   br/
   = form.button :submit, class: 'btn btn-primary'
