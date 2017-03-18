@@ -1,0 +1,40 @@
+h4
+  | Administrators table of comments
+br/
+= search_form_for @search, url: comment_search_path, method: :post do |f|
+  .field
+    =< f.label :text_cont, 'Text contains'
+    =< f.text_field :text_cont         
+    =< f.submit "Search"
+table#table
+  tr
+    th
+      | Post name
+    th
+      | Comment author
+    th
+      | Comment text
+    th
+      | Created
+    th
+      | Updated
+    th
+      | Actions
+  - @searched_comments.each do |comment|
+    tr
+      td
+        = link_to(comment.post.name, comment.post)
+      td
+        = comment.user.email
+      td
+        = comment.text
+      td
+        = comment.created_at
+      td
+        = comment.updated_at
+      td
+        = link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: 'Are you sure?'}
+br/
+p       
+  = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
+#form-comment       

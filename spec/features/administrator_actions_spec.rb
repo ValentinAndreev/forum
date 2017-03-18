@@ -11,8 +11,7 @@ feature 'Administrator actions' do
   end
   
   scenario 'administrator can see table of posts' do
-    expect(page).to have_css('.field')
-    expect(page).to have_css('table#posts')    
+    expect(page).to have_css('.field')  
     expect(page).to have_content('Administrators table of posts')
   end
 

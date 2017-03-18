@@ -1,52 +1,8 @@
-- if current_user.admin
-  h4
-    | Administrators table of posts
-  br/
-  = search_form_for @search do |f|
-    .field
-      = f.label :name_cont, 'Name contains'
-      =< f.text_field :name_cont
-      =< f.label :text_cont, 'Text contains'
-      =< f.text_field :text_cont          
-      =< f.submit "Search"
-  table#posts
-    tr
-      th
-        | Post name
-      th
-        | Post author
-      th
-        | Post text
-      th
-        | Created
-      th
-        | Updated
-      th
-        | Comments
-      th
-        | Actions
-    - @searched_posts.each do |post|
-      tr
-        td
-          = link_to(post.name, post)
-        td
-          = post.user.email
-        td
-          = sanitz(post)
-        td
-          = post.created_at
-        td
-          = post.updated_at
-        td
-          = commts(post)
-        td
-          = link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}
-- else          
-  h2 All posts
-  #posts
-    = render @posts
-  = will_paginate @posts, renderer: BootstrapPagination::Rails
-  h2  
-    => link_to 'New post', new_post_path, remote: true, class: 'btn btn-primary' if @posts.total_pages == @posts.current_page
-    = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
-  #form          
+h2 All posts
+#posts
+  = render @posts, type: 'index'
+= will_paginate @posts, renderer: BootstrapPagination::Rails
+h2  
+  => link_to 'New post', new_post_path, remote: true, class: 'btn btn-primary' if @posts.total_pages == @posts.current_page
+  = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
+#form

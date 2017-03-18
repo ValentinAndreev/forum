@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
   before_action :require_login
-  before_action :set_post
-
-  def index
+  before_action :set_post, except: :dashboard
+  
+  def dashboard
     @search = Post.search(params[:q])
     @searched_posts = @search.result
+  end
+
+  def index
     @posts = Post.paginate(:page => params[:page], :per_page => 3)
     respond_to do |format|
       format.html
@@ -33,12 +36,15 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    render 'edit' unless @post.update(post_params)
+    render 'edit' unless @post.update(post_params)   
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path if current_user.admin
+    respond_to do |format|
+      format.html { redirect_to posts_path, notice: 'Post was deleted' if current_user.admin }
+      format.js
+    end
   end
 
   private
