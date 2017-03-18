@@ -1,12 +1,15 @@
+- sho = request.original_url.include?("posts/")
 .item[data-item-id="#{post.id}"]
   #text
     = image_tag avatar_url(post.user), style: 'border-radius: 50%;'
     h3 =post.name
+    = sanitz (post) if sho
+    br/
     | Author: #{post.user.email}
     |  Created: #{post.created_at}
     p
       br/
-      =< link_to 'Show', post_path(post), class: 'btn btn-primary'
+      =< link_to 'Show', post_path(post), class: 'btn btn-primary' unless sho
       - if post.user == current_user || current_user.admin
         =< link_to 'Edit', edit_post_path(post), class: 'btn btn-primary', remote: true
-        =< link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary', remote: true
+        =< link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary', remote: true unless sho

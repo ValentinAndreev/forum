@@ -1,10 +1,7 @@
-= image_tag avatar_url(@post.user), style: 'border-radius: 50%;'
-h3 =@post.name
-= sanitz (@post)
-p
-  br/
-  | Author: #{@post.user.email}
-  |  Created: #{@post.created_at}
+#posts
+ = render @post
+= link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
+#form    
 #comments
   = render @comments
 h2 
