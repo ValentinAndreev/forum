@@ -5,7 +5,7 @@ feature 'Another users post actions' do
   given!(:another_user) { create(:user, email: 'another_mail@mail.com') }
   given!(:post) { create(:post, name: 'Post name', text: 'Post text', user: another_user) }
 
-  background { log_in_user(user) }
+  background { log_in_user }
 
   scenario "can't edit post" do
     expect(page).to_not have_button 'Edit'

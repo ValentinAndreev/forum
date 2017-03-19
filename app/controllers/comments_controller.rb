@@ -14,12 +14,12 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
-    render 'new' unless @comment.save  
+    render 'new' unless @comment.save
   end
 
   def update
     @comment.update(comment_params)
-    render 'edit' unless @comment.update(comment_params) 
+    render 'edit' unless @comment.update(comment_params)
   end
 
   def destroy
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @post, notice: 'Comment was deleted' if current_user.admin }
       format.js
-    end    
+    end
   end
 
   private

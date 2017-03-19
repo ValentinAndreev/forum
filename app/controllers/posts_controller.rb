@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
   before_action :require_login
   before_action :set_post, except: :dashboard
-  
+
   def dashboard
     @search = Post.search(params[:q])
     @searched_posts = @search.result
   end
 
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 3)
+    @posts = Post.paginate(page: params[:page], per_page: 3)
     respond_to do |format|
       format.html
       format.js
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit ; end
+  def edit; end
 
   def new
     @post = current_user.posts.new
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    render 'edit' unless @post.update(post_params)   
+    render 'edit' unless @post.update(post_params)
   end
 
   def destroy

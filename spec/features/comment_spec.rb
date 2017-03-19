@@ -5,7 +5,7 @@ feature 'Comment actions' do
   given!(:post) { create(:post, user: user) }
 
   before do 
-    log_in_user(user)
+    log_in_user
     visit posts_path
     click_on 'Show'
     click_on 'New comment'

@@ -21,7 +21,7 @@ feature 'Users creation and login' do
   end
 
   scenario 'user log in and logout' do
-    log_in_user(user)
+    log_in_user
     click_on 'Logout'
     expect(page).to have_content 'You must register or login to continue.'
   end

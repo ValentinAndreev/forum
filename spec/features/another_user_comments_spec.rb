@@ -7,7 +7,7 @@ feature 'Another users post actions' do
   given!(:comment) { create(:comment, text: 'another comment text', user: another_user, post: post) }
 
   before do 
-    log_in_user(user)
+    log_in_user
     visit post_path(post)
   end
 

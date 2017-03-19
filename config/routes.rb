@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   post 'comment_search' => 'comments#dashboard', as: :comment_search
-  post 'post_search' => 'posts#dashboard', as: :post_search 
+  post 'post_search' => 'posts#dashboard', as: :post_search
   get 'login' => 'usersessions#new', as: :login
   post 'logout' => 'usersessions#destroy', as: :logout
 end
