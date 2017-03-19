@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 feature 'Another users post actions' do
-  before do 
-    log_in_user 
-    visit post_path(Post.first)
-  end
-
+  given!(:user) { create(:user) }
   given!(:another_user) { create(:user, email: 'another_mail@mail.com') }
-  given!(:comment) { create(:comment, text: 'another comment text', user: another_user, post: Post.first) }
+  given!(:post) { create(:post, user: user) }
+  given!(:comment) { create(:comment, text: 'another comment text', user: another_user, post: post) }
+
+  before do 
+    log_in_user(user)
+    visit post_path(post)
+  end
 
   scenario "can't edit comment" do
     expect(page).to_not have_button 'Edit'

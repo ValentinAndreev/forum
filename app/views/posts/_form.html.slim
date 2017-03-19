@@ -1,6 +1,6 @@
 br/
 = simple_form_for @post, remote: true do |form|
-  = form.input :name, as: :text, input_html: {style: 'height:35px;'}, required: true
-  = form.trix_editor :text, id: 'texteditor'
+  = form.input :name, as: :text, input_html: { style: 'height:35px;' }, required: true
+  = form.input :text, as: :text, input_html: { rows: 7 }
   br/
   = form.button :submit, class: 'btn btn-primary'

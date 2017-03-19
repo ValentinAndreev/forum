@@ -1,5 +1,4 @@
 $('#close').hide();
 $('#form').fadeOut();
 $('.item[data-item-id=<%= @post.id %>]').replaceWith("<%= j render @post %>");
-$('#posts').replaceWith("<%= j render @post %>");
 $('#post-show').replaceWith("<%= j render @post %>");

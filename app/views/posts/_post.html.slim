@@ -11,5 +11,5 @@
       br/
       =< link_to 'Show', post_path(post), class: 'btn btn-primary' unless sho
       - if post.user == current_user || current_user.admin
-        =< link_to 'Edit', edit_post_path(post), class: 'btn btn-primary', remote: true
+        =< link_to 'Edit', edit_post_path(post), class: 'btn btn-primary', remote: true if sho
         =< link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary', remote: true unless sho

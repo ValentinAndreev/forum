@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 feature 'Users creation and login' do
+  given!(:user) { create(:user) }
+
   scenario 'sign up' do
     visit new_user_path
-    fill_in 'Email', with: 'mail@mail.com'
+    fill_in 'Email', with: 'test_mail@mail.com'
     fill_in 'Password', with: 'password', match: :prefer_exact
     fill_in 'Password confirmation', with: 'password', match: :prefer_exact
     click_on 'Create user'
@@ -19,7 +21,7 @@ feature 'Users creation and login' do
   end
 
   scenario 'user log in and logout' do
-    log_in_user
+    log_in_user(user)
     click_on 'Logout'
     expect(page).to have_content 'You must register or login to continue.'
   end
