@@ -1,24 +1,8 @@
-# README
+# Forum
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple forum.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Uses:
+* gem 'selenium-webdriver' for testing ajax.
+* gem 'ransack' for simple search forms.
+* Other: gem 'bootstrap-sass', gem 'gravtastic', gem 'will_paginate-bootstrap'
