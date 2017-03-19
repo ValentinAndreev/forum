@@ -24,6 +24,25 @@ feature 'Administrator actions' do
     expect(page).to have_content('Administrators table of comments')
   end
 
+  scenario 'administrator can see table of users' do
+    click_on 'Table of users'
+    expect(page).to have_current_path(user_search_path)
+    expect(page).to have_content('Administrators table of users')
+  end
+
+  scenario 'search user by email' do 
+    click_on 'Table of users'     
+    fill_in 'Email contains', with: 'admin@mail.com'
+    click_on 'Search'
+    expect(page).to_not have_content 'another_mail@mail.com'
+  end   
+
+  scenario 'delete users' do
+    click_on 'Table of users'
+    click_on 'Delete', match: :first
+    expect(page).to_not have_content 'another_mail@mail.com'
+  end
+
   scenario 'search post by name' do 
     click_on 'Table of posts'     
     fill_in 'Name contains', with: 'AnotherPost'

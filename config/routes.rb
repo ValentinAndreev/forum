@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   post 'comment_search' => 'comments#dashboard', as: :comment_search
   post 'post_search' => 'posts#dashboard', as: :post_search
+  post 'user_search' => 'users#dashboard', as: :user_search
   get 'login' => 'usersessions#new', as: :login
   post 'logout' => 'usersessions#destroy', as: :logout
 end

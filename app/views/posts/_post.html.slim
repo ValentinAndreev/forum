@@ -4,7 +4,7 @@
     = image_tag avatar_url(post.user), style: 'border-radius: 50%;'
     h3 =post.name
     = sanitz (post) if sho
-    br/
+    hr/
     | Author: #{post.user.email}
     |  Created: #{post.created_at}
     p

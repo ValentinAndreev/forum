@@ -13,7 +13,7 @@ feature 'Another users post actions' do
 
   scenario 'can show post' do
     visit root_path
-    click_on 'All posts'
+    click_on 'All posts', match: :first
     click_on 'Show'
     expect(page).to have_content 'Author: another_mail@mail.com'
     expect(page).to have_content 'Post text'    

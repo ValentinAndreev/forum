@@ -11,13 +11,14 @@ html
       - if current_user
         = image_tag avatar_url(current_user), style: 'border-radius: 50%;'
         =<> current_user.email
-        =<> link_to 'Edit profile', edit_user_path(current_user.id)
+        =< link_to 'Home', root_path
+        =< link_to 'Edit profile', edit_user_path(current_user.id)
         =< link_to 'Logout', logout_path, method: :post
         =< link_to 'All posts', posts_path
-        - if current_user.admin
-          |  Welcome administrator!        
+        - if current_user.admin       
           =< link_to 'Table of posts', post_search_path, method: :post
           =< link_to 'Table of comments', comment_search_path, method: :post
+          =< link_to 'Table of users', user_search_path, method: :post
       - else
         = link_to 'Registration', new_user_path
         =< link_to 'Sign in', login_path 

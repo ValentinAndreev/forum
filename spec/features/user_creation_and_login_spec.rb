@@ -22,7 +22,7 @@ feature 'Users creation and login' do
 
   scenario 'user log in and logout' do
     log_in_user
-    click_on 'Logout'
+    click_on 'Logout', match: :first
     expect(page).to have_content 'You must register or login to continue.'
   end
 end

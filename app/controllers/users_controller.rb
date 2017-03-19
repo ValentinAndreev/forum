@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
 
+  def dashboard
+    @search = User.search(params[:q])
+    @searched_users = @search.result
+  end
+
   def new
     @user = User.new
   end

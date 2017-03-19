@@ -1,4 +1,18 @@
 - if current_user
-  h3 Hello, #{current_user.email}
+  h3 Hello, #{@data[:email]}
+  = image_tag avatar_url(current_user)
+  hr/
+  p
+    | You have #{@data[:posts]} posts.
+  p
+    | You have #{@data[:comments]} comments. 
+  - if current_user.admin
+    h4 Welcome, administrator.
+    =< link_to 'Table of posts', post_search_path, method: :post, class: 'btn btn-primary'
+    =< link_to 'Table of comments', comment_search_path, method: :post, class: 'btn btn-primary'  
+    =< link_to 'Table of users', user_search_path, method: :post, class: 'btn btn-primary'    
+  =< link_to 'Edit profile', edit_user_path(current_user.id), class: 'btn btn-primary'
+  =< link_to 'Logout', logout_path, method: :post, class: 'btn btn-primary'
+  =< link_to 'All posts', posts_path, class: 'btn btn-primary'    
 - else  
-  h3 You must register or login to continue.
+  h2 You must register or login to continue.

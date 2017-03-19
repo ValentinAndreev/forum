@@ -33,8 +33,4 @@ table#table
       td
         = comment.updated_at
       td
-        = link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: 'Are you sure?'}
-br/
-p       
-  = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
-#form-comment       
+        = link_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: {confirm: 'Are you sure?'}     

@@ -1,0 +1,36 @@
+h4
+  | Administrators table of users
+br/
+= search_form_for @search, url: user_search_path, method: :post do |f|
+  .field
+    = f.label :email_cont, 'Email contains'
+    =< f.text_field :email_cont      
+    =< f.submit "Search"
+table#table
+  tr
+    th
+      | User email
+    th
+      | Created
+    th
+      | Updated
+    th
+      | Posts
+    th
+      | Comments
+    th
+      | Actions
+  - @searched_users.each do |user|
+    tr
+      td
+        = user.email
+      td
+        = user.created_at
+      td
+        = user.updated_at
+      td
+        = number_posts(user)
+      td
+        = number_comments(user)
+      td        
+        = link_to 'Delete', user_path(user), method: :delete, data: {confirm: 'Are you sure?'}

@@ -39,8 +39,4 @@ table#table
       td
         = commts(post)
       td        
-        = link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'} 
-br/
-p       
-  = link_to 'Close form', '#', id: 'close', class: 'btn btn-primary'
-#form        
+        = link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}
